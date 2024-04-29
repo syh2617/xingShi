@@ -64,11 +64,23 @@ for value in xingGuShiWen.values():
     if (len(value[3])>0 and value[3].find("分布")>=0 and value[3].find("分布")<=4):
         value[3]=value[3][4:]
 
+    text1=value[1]
+    if len(value[1])>0:
+        text1=value[1].split("\n")
+        text1=[string for string in text1 if string != '']
+    text2 = value[2]
+    if len(value[2] )> 0:
+        text2 = value[2].split("\n")
+        text2 = [string for string in text2 if string != '']
+    text3 = value[3]
+    if len(value[3] )> 0:
+        text3 = value[3].split("\n")
+        text3 = [string for string in text3 if string != '']
 
     all_xing[value[0]]={
-        "历史来源": [value[1]],
-        "家族名人": [value[2]],
-        "分布": [value[3]],
+        "历史来源": text1,
+        "家族名人": text2,
+        "分布": text3,
         "姓氏图腾": [value[4]]
     }
 
@@ -183,3 +195,4 @@ with open(filename2, 'w', encoding='utf-8') as json_file:
     json.dump(all_links_nodes, json_file, indent=4, ensure_ascii=False)
 
 print("JSON文件已创建：", filename2)
+
