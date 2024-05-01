@@ -34,7 +34,7 @@
 body {
     background-color: #272b30;   /*背景颜色*/
     padding-bottom: 30px, 40px;
-    text-align: center;
+    text-align:center;
     font-family: OpenSans-Light, PingFang SC, Hiragino Sans GB, Microsoft Yahei, Microsoft Jhenghei, sans-serif;
 }
 
@@ -300,9 +300,10 @@ body {
         <ul>
             <div class="bg"></div>
             <li><span><a href="index1.html" target="_self" style="color: white;"><big><b>姓氏起源</b></big></a></span></li>
-            <li><span><a href="html/1.html" target="_self" style="color: white;">临床表现</a></span></li>
-            <li><span><a href="html/2.html" target="_self" style="color: white;">传播途径</a></span></li>
-            <li><span><a href="html/3.html" target="_self" style="color: white;">专家观点</a></span></li>
+            <li><span><a href="html/1.html" target="_self" style="color: white;">姓氏介绍</a></span></li>
+            <li><span><a href="html/2.html" target="_self" style="color: white;">姓氏排行</a></span></li>
+            <li><span><a href="html/3-1.html" target="_self" style="color: white;">百家姓</a></span></li>
+            <li><span><a href="html/4-1.html" target="_self" style="color: white;">姓氏杂谈</a></span></li>
         </ul>
         <div class="clear"></div>
     </div>
@@ -369,6 +370,34 @@ body {
 </body>
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <!-- 自定义的js代码 -->
+<script>
+function checkSurname() {
+    var surname = document.getElementById("inputSurname").value;
+
+    // 定义2007年和2015年的姓氏数组
+    var surnames2007 = ["张", "王", "李", /* 在此添加完整的姓氏数组 */];
+    var surnames2015 = ["张", "王", "李","苏", /* 在此添加完整的姓氏数组 */];
+
+    // 查找2007年排名
+    var index2007 = surnames2007.indexOf(surname);
+
+    // 查找2015年排名
+    var index2015 = surnames2015.indexOf(surname);
+
+    // 输出结果
+    if (index2007 !== -1) {
+        document.getElementById("outputResult").textContent = "该姓氏在2007年排名第" + (index2007 + 1) + "位";
+    } else {
+        document.getElementById("outputResult").textContent = "2007年不存在";
+    }
+
+    if (index2015 !== -1) {
+        document.getElementById("outputResult").textContent += "<br>该姓氏在2015年排名第" + (index2015 + 1) + "位";
+    } else {
+        document.getElementById("outputResult").textContent += "<br>2015年不存在";
+    }
+}
+</script>
 <script>
 $(document).ready(function() {
     // 定义svg变量，选出第一个图
